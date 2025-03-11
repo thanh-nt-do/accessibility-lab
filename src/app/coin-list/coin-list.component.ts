@@ -15,7 +15,7 @@ export class CoinListComponent implements OnInit {
   bannerData: any = [];
   currency : string = "INR"
   dataSource!: MatTableDataSource<any>;
-  displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap'];
+  displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap','details'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private api: ApiService, private router : Router, private currencyService : CurrencyService) { }
