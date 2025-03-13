@@ -5,12 +5,12 @@
             <h6>Check all the crypto currency lastest updates</h6>
         </div>
         <div class="sub-header">
-            <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="left">
+            <div behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="left">
                 <div class="row">
                     <ng-container *ngFor="let row of bannerData">
                         <div class="col-1">
                             <div class="card">
-                                <img [src]="row.image" width="100" class="img-fluid" >
+                                <img alt="coin" [src]="row.image" width="100" class="img-fluid" >
                                 <div class="card-body">
                                     <h5 class="card-title">{{row.symbol | uppercase}} <span class="text-danger">{{row.market_cap_change_percentage_24h}}%</span></h5>
                                     <p class="card-text">{{row.current_price | currency: currency}}</p>
@@ -20,7 +20,7 @@
                     </ng-container>
 
                 </div>
-            </marquee>
+            </div>
         </div>
     </div>
 </div>
@@ -28,8 +28,8 @@
 <div class="container">
     <!-- Table -->
     <mat-form-field appearance="standard">
-        
-        <input style="color: aliceblue;" matInput (keyup)="applyFilter($event)" #input>
+        <label class="search" for="search">Search:</label>
+        <input id="search" style="color: aliceblue;" matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
 
     <div class="mat-elevation-z8">
@@ -39,7 +39,7 @@
             <ng-container matColumnDef="symbol">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Coin </th>
                 <td mat-cell *matCellDef="let row">
-                    <img [src]="row.image" width="50">
+                    <img alt="coin image" [src]="row.image" width="50">
                     <span class="mx-2"><a href="javascript:void(0)">{{row.symbol | uppercase}}</a></span>
                 </td>
             </ng-container>
@@ -52,7 +52,7 @@
 
             <!-- Name Column -->
             <ng-container matColumnDef="price_change_percentage_24h">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> 24h Change </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > 24h Change </th>
                 <td mat-cell *matCellDef="let row"> {{row.price_change_percentage_24h}}% </td>
             </ng-container>
 
@@ -65,10 +65,10 @@
 
             <ng-container matColumnDef="details">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
-                <tr><a (click)="gotoDetails(row)" *matCellDef="let row" href="javascript:void(0)">Click here</a></tr>
+                <tr><a (click)="gotoDetails(row)" *matCellDef="let row" >Click here</a></tr>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             
 
